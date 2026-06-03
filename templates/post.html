@@ -6,52 +6,57 @@
 
     <article>
         <h2>{{ post.title }}</h2>
+
         <p><small>Published: {{ post.created_at }}</small></p>
+
+        {% if post.updated_at %}
+            <p><small>Updated: {{ post.updated_at }}</small></p>
+        {% endif %}
 
         <p>{{ post.body }}</p>
 
         <p>
             <a href="/posts/{{ post.id }}/edit">Edit post</a>
         </p>
+
         <form action="/posts/{{ post.id }}/delete" method="POST">
             <button type="submit">Delete post</button>
         </form>
-
     </article>
 
-<section>
-    <h3>Comments</h3>
+    <section>
+        <h3>Comments</h3>
 
-    {% if comments %}
-        {% for comment in comments %}
-            <article>
-                <h4>{{ comment.title }}</h4>
-                <p><small>{{ comment.created_at }}</small></p>
-                <p>{{ comment.body }}</p>
-            </article>
-        {% endfor %}
-    {% else %}
-        <p>No comments yet.</p>
-    {% endif %}
-</section>
+        {% if comments %}
+            {% for comment in comments %}
+                <article>
+                    <h4>{{ comment.title }}</h4>
+                    <p><small>{{ comment.created_at }}</small></p>
+                    <p>{{ comment.body }}</p>
+                </article>
+            {% endfor %}
+        {% else %}
+            <p>No comments yet.</p>
+        {% endif %}
+    </section>
 
-<section>
-    <h3>Add a comment</h3>
+    <section>
+        <h3>Add a comment</h3>
 
-    <form action="/posts/{{ post.id }}/comments" method="POST">
-        <p>
-            <label for="title">Title</label><br>
-            <input type="text" id="title" name="title">
-        </p>
+        <form action="/posts/{{ post.id }}/comments" method="POST">
+            <p>
+                <label for="title">Title</label><br>
+                <input type="text" id="title" name="title">
+            </p>
 
-        <p>
-            <label for="body">Comment</label><br>
-            <textarea id="body" name="body" rows="5"></textarea>
-        </p>
+            <p>
+                <label for="body">Comment</label><br>
+                <textarea id="body" name="body" rows="5"></textarea>
+            </p>
 
-        <button type="submit">Add Comment</button>
-    </form>
-</section>
+            <button type="submit">Add Comment</button>
+        </form>
+    </section>
 
 {% else %}
 
