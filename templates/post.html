@@ -13,6 +13,9 @@
         <p>
             <a href="/posts/{{ post.id }}/edit">Edit post</a>
         </p>
+        <form action="/posts/{{ post.id }}/delete" method="POST">
+            <button type="submit">Delete post</button>
+        </form>
 
     </article>
 

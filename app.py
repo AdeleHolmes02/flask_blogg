@@ -50,5 +50,10 @@ def edit_post(post_id):
 
     return render_template("edit_post.html", post=post)
 
+@app.route("/posts/<int:post_id>/delete", methods=["POST"])
+def delete_post(post_id):
+    database.delete_post(post_id)
+    return redirect(url_for("home"))
+
 if __name__ == "__main__":
     app.run(debug=True)
