@@ -4,6 +4,10 @@
 
 <h2>Create New Blog Post</h2>
 
+{% if error %}
+    <p>{{ error }}</p>
+{% endif %}
+
 <form method="POST">
     <p>
         <label for="title">Title</label><br>

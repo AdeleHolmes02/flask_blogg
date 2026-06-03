@@ -23,14 +23,14 @@ def new_post():
         body = request.form["body"]
 
         if not title or not body:
-            return render_template("new_post.html")
+            error = "Title and body are required."
+            return render_template("new_post.html", error=error)
 
         database.create_post(title, body)
 
         return redirect(url_for("home"))
 
     return render_template("new_post.html")
-
 
 if __name__ == "__main__":
     app.run(debug=True)
