@@ -19,6 +19,40 @@
 
     </article>
 
+<section>
+    <h3>Comments</h3>
+
+    {% if comments %}
+        {% for comment in comments %}
+            <article>
+                <h4>{{ comment.title }}</h4>
+                <p><small>{{ comment.created_at }}</small></p>
+                <p>{{ comment.body }}</p>
+            </article>
+        {% endfor %}
+    {% else %}
+        <p>No comments yet.</p>
+    {% endif %}
+</section>
+
+<section>
+    <h3>Add a comment</h3>
+
+    <form action="/posts/{{ post.id }}/comments" method="POST">
+        <p>
+            <label for="title">Title</label><br>
+            <input type="text" id="title" name="title">
+        </p>
+
+        <p>
+            <label for="body">Comment</label><br>
+            <textarea id="body" name="body" rows="5"></textarea>
+        </p>
+
+        <button type="submit">Add Comment</button>
+    </form>
+</section>
+
 {% else %}
 
     <p>Post not found.</p>

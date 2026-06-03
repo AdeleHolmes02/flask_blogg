@@ -13,8 +13,18 @@ def home():
 @app.route("/posts/<int:post_id>")
 def show_post(post_id):
     post = database.get_post(post_id)
-    return render_template("post.html", post=post)
+    comments = database.get_comments_for_post(post_id)
+    return render_template("post.html", post=post, comments=comments)
 
+@app.route("/posts/<int:post_id>/comments", methods=["POST"])
+def add_comment(post_id):
+    title = request.form["title"]
+    body = request.form["body"]
+
+    if title and body:
+        database.create_comment(post_id, title, body)
+
+    return redirect(url_for("show_post", post_id=post_id))
 
 @app.route("/posts/new", methods=["GET", "POST"])
 def new_post():

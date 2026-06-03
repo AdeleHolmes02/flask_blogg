@@ -52,3 +52,21 @@ def delete_post(post_id):
 
     connection.commit()
     connection.close()
+
+def get_comments_for_post(post_id):
+    connection = get_db_connection()
+    comments = connection.execute(
+        "SELECT * FROM comments WHERE post_id = ? ORDER BY created_at DESC",
+        (post_id,)
+    ).fetchall()
+    connection.close()
+    return comments 
+
+def create_comment(post_id, title, body):
+    connection = get_db_connection()
+    connection.execute(
+        "INSERT INTO comments (post_id, title, body) VALUES (?, ?, ?)",
+        (post_id, title, body)
+    )
+    connection.commit()
+    connection.close()
