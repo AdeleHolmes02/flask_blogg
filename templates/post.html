@@ -17,7 +17,7 @@
             <p>
                 Tags:
                 {% for tag in tags %}
-                     <span>{{ tag.name }}</span>
+                    <a href="/tags/{{ tag.name }}">{{ tag.name }}</a>
                 {% endfor %}
             </p> 
         {% endif %}

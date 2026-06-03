@@ -130,3 +130,19 @@ def get_tags_for_post(post_id):
     ).fetchall()
     connection.close()
     return tags
+
+def get_posts_by_tag(tag_name):
+    connection = get_db_connection()
+    posts = connection.execute(
+        """
+        SELECT posts.*
+        FROM posts
+        JOIN post_tags ON posts.id = post_tags.post_id
+        JOIN tags ON tags.id = post_tags.tag_id
+        WHERE tags.name = ?
+        ORDER BY posts.created_at DESC
+        """,
+        (tag_name,)
+    ).fetchall()
+    connection.close()
+    return posts

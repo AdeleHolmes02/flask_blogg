@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Posts tagged with "{{ tag_name }}"</h2>
+
+{% if posts %}
+
+    {% for post in posts %}
+        <article>
+            <h3>
+                <a href="/posts/{{ post.id }}">{{ post.title }}</a>
+            </h3>
+
+            <p><small>Published: {{ post.created_at }}</small></p>
+
+            <p>{{ post.body[:150] }}...</p>
+
+            <p>
+                <a href="/posts/{{ post.id }}">Read more</a>
+            </p>
+        </article>
+    {% endfor %}
+
+{% else %}
+
+    <p>No posts found for this tag.</p>
+
+{% endif %}
+
+{% endblock %}

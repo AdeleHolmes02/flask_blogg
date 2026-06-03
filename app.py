@@ -44,6 +44,11 @@ def new_post():
 
     return render_template("new_post.html")
 
+@app.route("/tags/<tag_name>")
+def posts_by_tag(tag_name):
+    posts = database.get_posts_by_tag(tag_name)
+    return render_template("tag.html", posts=posts, tag_name=tag_name)
+
 @app.route("/posts/<int:post_id>/edit", methods=["GET", "POST"])
 def edit_post(post_id):
     post = database.get_post(post_id)
