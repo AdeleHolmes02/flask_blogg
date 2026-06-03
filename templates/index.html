@@ -2,8 +2,22 @@
 
 {% block content %}
 
-<h2>Welcome</h2>
+<h2>Latest Posts</h2>
 
-<p>Welcome to my backend blog project.</p>
+{% if posts %}
+
+    <ul>
+    {% for post in posts %}
+        <li>
+            <strong>{{ post.title }}</strong>
+        </li>
+    {% endfor %}
+    </ul>
+
+{% else %}
+
+    <p>No blog posts yet.</p>
+
+{% endif %}
 
 {% endblock %}
