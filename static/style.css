@@ -48,3 +48,61 @@ button {
 a {
     color: #1f4f8f;
 }
+
+header {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+nav {
+    text-align: center;
+    padding: 12px 0;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+nav a {
+    font-weight: bold;
+}
+
+button {
+    border: none;
+    background-color: #222;
+    color: white;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #444;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.tag {
+    display: inline-block;
+    background-color: #eeeeee;
+    color: #333;
+    padding: 4px 8px;
+    margin-right: 6px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.tag:hover {
+    background-color: #dddddd;
+}
+
+.comment {
+    background-color: #f5f5f5;
+    border-left: 4px solid #cccccc;
+    padding: 12px;
+    margin-bottom: 12px;
+}
+
+.comment h4 {
+    margin-top: 0;
+    margin-bottom: 4px;
+}
