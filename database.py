@@ -16,3 +16,11 @@ def get_all_posts():
     ).fetchall()
     connection.close()
     return posts
+def get_post(post_id):
+    connection = get_db_connection()
+    post = connection.execute(
+        "SELECT * FROM posts WHERE id = ?",
+        (post_id,)
+    ).fetchone()
+    connection.close()
+    return post
