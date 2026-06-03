@@ -24,3 +24,11 @@ def get_post(post_id):
     ).fetchone()
     connection.close()
     return post
+def create_post(title, body):
+    connection = get_db_connection()
+    connection.execute(
+        "INSERT INTO posts (title, body) VALUES (?, ?)",
+        (title, body)
+    )
+    connection.commit()
+    connection.close()

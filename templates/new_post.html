@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Create New Blog Post</h2>
+
+<form method="POST">
+    <p>
+        <label for="title">Title</label><br>
+        <input type="text" id="title" name="title">
+    </p>
+
+    <p>
+        <label for="body">Body</label><br>
+        <textarea id="body" name="body" rows="8"></textarea>
+    </p>
+
+    <button type="submit">Save Post</button>
+</form>
+
+{% endblock %}
