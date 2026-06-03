@@ -32,3 +32,12 @@ def create_post(title, body):
     )
     connection.commit()
     connection.close()
+    
+def update_post(post_id, title, body):
+    connection = get_db_connection()
+    connection.execute(
+        "UPDATE posts SET title = ?, body = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?",
+        (title, body, post_id)
+    )
+    connection.commit()
+    connection.close()

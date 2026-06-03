@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Edit Blog Post</h2>
+
+{% if error %}
+    <p>{{ error }}</p>
+{% endif %}
+
+<form method="POST">
+    <p>
+        <label for="title">Title</label><br>
+        <input type="text" id="title" name="title" value="{{ post.title }}">
+    </p>
+
+    <p>
+        <label for="body">Body</label><br>
+        <textarea id="body" name="body" rows="8">{{ post.body }}</textarea>
+    </p>
+
+    <button type="submit">Save Changes</button>
+</form>
+
+{% endblock %}
