@@ -13,6 +13,15 @@
             <p><small>Updated: {{ post.updated_at }}</small></p>
         {% endif %}
 
+        {% if tags %}
+            <p>
+                Tags:
+                {% for tag in tags %}
+                     <span>{{ tag.name }}</span>
+                {% endfor %}
+            </p> 
+        {% endif %}
+
         <p>{{ post.body }}</p>
 
         <p>

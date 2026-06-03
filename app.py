@@ -14,7 +14,8 @@ def home():
 def show_post(post_id):
     post = database.get_post(post_id)
     comments = database.get_comments_for_post(post_id)
-    return render_template("post.html", post=post, comments=comments)
+    tags = database.get_tags_for_post(post_id)
+    return render_template("post.html", post=post, comments=comments, tags=tags)
 
 @app.route("/posts/<int:post_id>/comments", methods=["POST"])
 def add_comment(post_id):
@@ -31,12 +32,13 @@ def new_post():
     if request.method == "POST":
         title = request.form["title"]
         body = request.form["body"]
+        tags = request.form["tags"]
 
         if not title or not body:
             error = "Title and body are required."
             return render_template("new_post.html", error=error)
 
-        database.create_post(title, body)
+        database.create_post(title, body, tags)
 
         return redirect(url_for("home"))
 
