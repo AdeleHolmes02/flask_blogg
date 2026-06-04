@@ -106,3 +106,44 @@ a:hover {
     margin-top: 0;
     margin-bottom: 4px;
 }
+
+body {
+    background: linear-gradient(180deg, #f7f4ef 0%, #fafafa 100%);
+}
+
+header h1 {
+    font-size: 2.6rem;
+    letter-spacing: -1px;
+}
+
+header::after {
+    content: "A personal backend blog built with Flask and SQLite";
+    display: block;
+    color: #666;
+    font-size: 0.95rem;
+    margin-top: -8px;
+}
+
+article {
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+input,
+textarea {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: inherit;
+}
+
+button {
+    transition: background-color 0.2s ease;
+}
+
+nav a {
+    padding: 6px 8px;
+}
+
+section {
+    margin-top: 30px;
+}
