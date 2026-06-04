@@ -28,8 +28,8 @@
             <a href="/posts/{{ post.id }}/edit">Edit post</a>
         </p>
 
-        <form action="/posts/{{ post.id }}/delete" method="POST">
-            <button type="submit">Delete post</button>
+        <form action="/posts/{{ post.id }}/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete this post?');">
+           <button type="submit">Delete post</button>
         </form>
     </article>
 

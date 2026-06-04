@@ -13,9 +13,19 @@ def home():
 @app.route("/posts/<int:post_id>")
 def show_post(post_id):
     post = database.get_post(post_id)
+
+    if post is None:
+        return render_template("post.html", post=None)
+
     comments = database.get_comments_for_post(post_id)
     tags = database.get_tags_for_post(post_id)
-    return render_template("post.html", post=post, comments=comments, tags=tags)
+
+    return render_template(
+        "post.html",
+        post=post,
+        comments=comments,
+        tags=tags
+    )
 
 @app.route("/posts/<int:post_id>/comments", methods=["POST"])
 def add_comment(post_id):
