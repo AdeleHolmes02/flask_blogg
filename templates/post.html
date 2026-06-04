@@ -51,6 +51,9 @@
 
     <section>
         <h3>Add a comment</h3>
+        {% if comment_error %}
+           <p>{{ comment_error }}</p>
+           {% endif %}
 
         <form action="/posts/{{ post.id }}/comments" method="POST">
             <p>

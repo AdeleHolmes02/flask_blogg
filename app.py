@@ -32,8 +32,21 @@ def add_comment(post_id):
     title = request.form["title"]
     body = request.form["body"]
 
-    if title and body:
-        database.create_comment(post_id, title, body)
+    if not title or not body:
+        post = database.get_post(post_id)
+        comments = database.get_comments_for_post(post_id)
+        tags = database.get_tags_for_post(post_id)
+        error = "Comment title and comment text are required."
+
+        return render_template(
+            "post.html",
+            post=post,
+            comments=comments,
+            tags=tags,
+            comment_error=error
+        )
+
+    database.create_comment(post_id, title, body)
 
     return redirect(url_for("show_post", post_id=post_id))
 
